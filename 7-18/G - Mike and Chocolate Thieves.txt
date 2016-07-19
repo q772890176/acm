@@ -1,0 +1,59 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long si[1111111];
+long long deal(long long n){
+    long long ans=0;
+    int i=2;
+
+    while (si[i]<=n){
+        ans+=(n/si[i]);
+        i++;
+    }
+    return ans;
+}
+int main() {
+    long long m,n,l,r,mid,tmp;
+    for (long long i=1;i<1111000;i++){
+        si[i]=i*i*i;
+    }
+    while (cin>>m){
+        l=0;
+        r=m*1000;
+        while (r-l>2){
+              // cout<<l<<" "<<r<<endl;
+            mid=(r+l)/2;
+            tmp=deal(mid);
+      //  cout<<mid<<"=="<<tmp<<endl;
+            if (tmp>=m){
+                r=mid;
+            }else{
+                l=mid;
+            }
+        }
+        tmp=deal(l);
+        if (tmp==m){
+            cout<<l<<endl;
+            continue;
+        }
+        tmp=deal(l+1);
+        if (tmp==m){
+            cout<<l+1<<endl;
+            continue;
+        }
+        tmp=deal(l+2);
+//        cout<<l+2<<"+++"<<tmp<<endl;
+        if (tmp==m){
+            cout<<l+2<<endl;
+            continue;
+        }
+        cout<<-1<<endl;
+    }
+return 0;
+
+}
+/*  6   12
+3 8
+
+
+
+*/

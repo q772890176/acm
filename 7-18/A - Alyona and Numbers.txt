@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    long long  n,m;
+    while (cin>>n>>m) {
+        long long  a=n/5,b=m/5;
+        long long  mn=n%5,mm=m%5;
+        long long ans=a*b*5;
+        ans=ans+mn*b+mm*a;
+        //  cout<<ans<<endl;
+        for (long long  i=1; i<=mn; i++) {
+            for (long long  j=1; j<=mm; j++) {
+                if (i+j==5) ans++;
+            }
+        }
+
+        cout<<ans<<endl;
+
+    }
+    return 0;
+}
+/*  6   12
+3 8
+
+
+
+*/

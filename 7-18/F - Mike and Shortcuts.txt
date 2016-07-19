@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+   int n,pan[300000],dis[300000],tiao[300000];
+int main() {
+    while (cin>>n) {
+        for (int i=1;i<=n;i++){
+            scanf("%d",&tiao[i]);
+            pan[i]=0;
+            dis[i]=300000;
+        }
+        pan[1]=1;
+        dis[1]=0;
+        queue<int> q;
+        q.push(1);
+        while(q.size()){
+            int now=q.front();
+            q.pop();
+            if (dis[tiao[now]]>(dis[now]+1)){
+                dis[tiao[now]]=dis[now]+1;
+                q.push(tiao[now]);
+            }
+            if (now>1){
+                if (dis[now-1]>(dis[now]+1)){
+                    dis[now-1]=dis[now]+1;
+                q.push(now-1);
+                }
+            }
+            if (now<n){
+                if (dis[now+1]>(dis[now]+1)){
+                    dis[now+1]=dis[now]+1;
+                q.push(now+1);
+                }
+            }
+        }
+        for (int i=1;i<=n;i++){
+            cout<<dis[i]<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
+/*  6   12
+3 8
+
+
+
+*/

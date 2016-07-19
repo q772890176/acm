@@ -1,0 +1,10 @@
+ 55 / 119 Problem A CodeForces 682A   Alyona and Numbers   
+ 54 / 84 Problem B CodeForces 682B   Alyona and Mex   
+ 39 / 95 Problem C CodeForces 682C   Alyona and the Tree   
+ 23 / 55 Problem D CodeForces 682D   Alyona and Strings   
+ 48 / 85 Problem E CodeForces 689A   Mike and Cellphone   
+ 38 / 93 Problem F CodeForces 689B   Mike and Shortcuts   
+ 30 / 45 Problem G CodeForces 689C   Mike and Chocolate Thieves   
+ 7 / 22 Problem H CodeForces 689D   Friends and Subsequences   
+ 9 / 28 Problem I CodeForces 689E   Mike and Geometry Problem   
+ 2 / 6 Problem J CodeForces 682E   Alyona and Triangles  

@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+int a[1000000];
+int mapp[20][20];
+int an[3][3];
+int main() {
+    int  n,m;
+//    for (int i=1; i<5;i++){
+//        for (int j=1;j<4;j++){
+//            mapp[i][j]=1;
+//        }
+//    }
+//    mapp[4][1]=mapp[4][3]=0;
+    char cha;
+    int pan[100];
+    while (cin>>n) {
+        int p=0;
+        memset(pan,0,sizeof pan);
+        for (int  i=0; i<n; i++) {
+            cin>>cha;
+            pan[cha-'0']++;
+        }
+        if (pan[1] || pan[2]  || pan[3] ) p++;
+        if (pan[1] || pan[4]  || pan[7] || pan[0]) p++;
+        if (pan[7] || pan[0]  || pan[9] ) p++;
+        if (pan[3] || pan[6]  || pan[9] || pan[0]) p++;
+        if (p==4) cout<<"YES"<<endl;
+        else cout<<"NO"<<endl;
+    }
+    return 0;
+}

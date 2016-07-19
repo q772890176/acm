@@ -1,0 +1,99 @@
+#include <vector>
+#include <algorithm>
+#include <stdio.h>
+
+typedef long long num;
+
+struct Point {
+  num x, y;
+
+  Point operator+(const Point &other) const {
+    return Point{x + other.x, y + other.y};
+  }
+
+  Point operator-(const Point &other) const {
+    return Point{x - other.x, y - other.y};
+  }
+
+  Point operator*(num a) const {
+    return Point{x * a, y * a};
+  }
+
+  bool operator==(const Point &other) const {
+    return x == other.x && y == other.y;
+  }
+
+  bool operator!=(const Point &other) const {
+    return ! (*this == other);
+  }
+
+  num operator^(const Point &other) const {
+    return x * other.y - y * other.x;
+  }
+};
+
+num area(const Point &a, const Point &b, const Point &c) {
+  return (b-a)^(c-a);
+}
+
+// Input
+Point points[5001];
+int n;
+num s;
+
+int main() {
+  int i;
+  char dummy[80];
+  // Read input
+  scanf("%d%s", &n, dummy);
+  for(i = 0; i < n; i++) {
+    int x, y;
+    scanf("%d%d", &x, &y);
+    points[i].x = x;
+    points[i].y = y;
+  }
+
+  // Find 2 distinct points
+  Point a = points[0];
+  for(i = 0; i < n; i++) {
+    if(points[i] != a) break;
+  }
+  Point b = points[i];
+
+  // Find 3 non-collinear points
+  for(i = 0; i < n; i++) {
+    if(area(a, b, points[i]) != 0) break;
+  }
+  Point c = points[i];
+  if(area(a, b, c) < 0) std::swap(b, c);
+
+  // Improve constantly
+  while(true) {
+    num cur = area(a, b, c);
+    for(i = 0; i < n; i++) {
+      if(area(a, b, points[i]) > cur) {
+        c = points[i];
+        break;
+      }
+      if(area(b, c, points[i]) > cur) {
+        a = points[i];
+        break;
+      }
+      if(area(c, a, points[i]) > cur) {
+        b = points[i];
+        break;
+      }
+    }
+    if(i >= n)
+      break;
+  }
+
+  Point c1 = a + b - c;
+  Point a1 = b + c - a;
+  Point b1 = c + a - b;
+
+  printf("%d %d\n%d %d\n%d %d\n", (int)a1.x, (int)a1.y, (int)b1.x,
+                                  (int)b1.y, (int)c1.x, (int)c1.y);
+
+  return 0;
+};
